@@ -3,21 +3,24 @@
 
 angular.module('QuepidApp')
   .controller('QscoreCtrl', [
-    '$scope',
-    function ($scope) {
+    '$scope', 'customScorerSvc',
+    function ($scope, customScorerSvc) {
       var ctrl          = this;
       var defaultStyle  = { 'background-color': 'hsl(0, 0%, 0%, 0.5)'};
 
       ctrl.diffScore    = '?';
       ctrl.diffStyle    = {};
       ctrl.score        = '?';
+      ctrl.decimalPlaces = 0;
       ctrl.scoreType    = ctrl.scoreType || 'normal';
       ctrl.style        = scoreToColor(ctrl.score);
 
       $scope.$watch('ctrl.scorable.score()', function() {
         var scorable = ctrl.scorable.score();
+        console.log(ctrl.scoreable);
 
         ctrl.score    = scorable.score;
+        ctrl.decimalPlaces = customScorerSvc.defaultScorer.decimalPlaces;
         ctrl.maxScore = ctrl.maxScore;
 
         if ( angular.isDefined(scorable.backgroundColor) ) {
@@ -88,6 +91,7 @@ angular.module('QuepidApp')
         // Make the color of the score relative to the max score possible:
         score = score * 100 / ctrl.maxScore;
         score = Math.round(parseInt(score, 10) / 10);
+
         return {
           '-1': { 'background-color': 'hsl(0, 100%, 40%)'},
           '0':  { 'background-color': 'hsl(5, 95%, 45%)'},

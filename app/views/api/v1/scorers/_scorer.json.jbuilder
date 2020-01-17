@@ -8,6 +8,7 @@ json.scorerId             scorer.id
 json.scorerType           'Scorer'
 json.code                 scorer.code
 json.communal             scorer.communal
+json.decimal_places       scorer.decimal_places
 json.name                 scorer.name
 json.queryTest            scorer.query_test
 json.queryId              scorer.query_id

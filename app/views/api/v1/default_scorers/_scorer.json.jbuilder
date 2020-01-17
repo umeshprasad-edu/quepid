@@ -4,6 +4,7 @@ json.scorerId             scorer.id
 json.scorerType           'DefaultScorer'
 json.code                 scorer.code
 json.name                 scorer.name
+json.decimal_places       scorer.decimal_places
 json.scale                scorer.scale
 json.manualMaxScore       scorer.manual_max_score
 json.manualMaxScoreValue  scorer.manual_max_score_value

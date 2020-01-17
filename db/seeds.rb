@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# 'V1' scorer aka 'Classic'
 DefaultScorer.first_or_create(
   scale:  (1..10).to_a,
   code:   [
@@ -16,7 +17,7 @@ DefaultScorer.first_or_create(
     '  // Adds a distance penalty to the score',
     '  score -= editDistanceFromBest();',
     '}',
-    'setScore(score);',
+    'setScore(score);'
   ].join("\n"),
   name:         'v1',
   state:        'published',

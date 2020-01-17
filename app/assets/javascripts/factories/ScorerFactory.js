@@ -42,6 +42,7 @@
       self.colors                 = scaleToColors(data.scale);
       self.communal               = data.communal;
       self.defaultAlgorithm       = defaultAlgorithm;
+      self.decimalPlaces          = data.decimal_places;
       self.displayName            = setDisplayName(data.name, data.scorerType);
       self.error                  = false;
       self.manualMaxScore         = data.manualMaxScore || false;
@@ -240,10 +241,7 @@
 
       function editDistance(str1, str2) {
         var makeZeroArr = function(len) {
-          var rVal = new Array(len);
-          for (var i = 0; i < len; i++) {
-            rVal[i] = 0;
-          }
+          var rVal = new Array(len).fill(0);
           return rVal;
         };
 

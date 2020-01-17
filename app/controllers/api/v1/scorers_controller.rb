@@ -187,6 +187,7 @@ module Api
           :manual_max_score_value,
           :show_scale_labels,
           :scale,
+          :decimal_places,
           scale: []
         ).tap do |whitelisted|
           whitelisted[:scale_with_labels] = params[:scorer][:scale_with_labels]
