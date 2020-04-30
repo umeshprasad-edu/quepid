@@ -61,8 +61,10 @@ angular.module('QuepidApp')
         var args = angular.copy(passedInSettings.selectedTry.args);
 
         if (passedInSettings && passedInSettings.selectedTry) {
+          var fieldSpec = passedInSettings.createFieldSpec();
           return searchSvc.createSearcher(
-            passedInSettings.createFieldSpec().fieldList(),
+            fieldSpec.fieldList(),
+            fieldSpec.highlightFieldList(),
             passedInSettings.selectedTry.searchUrl,
             args,
             query,

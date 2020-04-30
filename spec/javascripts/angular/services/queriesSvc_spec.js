@@ -148,7 +148,7 @@ describe('Service: queriesSvc', function () {
       return searchers;
     };
 
-    this.createSearcher = function(fieldList, searchUrl, args, queryText) {
+    this.createSearcher = function(fieldList, highlightFieldList, searchUrl, args, queryText) {
       var settings = {};
       settings.searchUrl = searchUrl;
       settings.args = args;
