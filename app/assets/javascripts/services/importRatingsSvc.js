@@ -27,23 +27,21 @@ angular.module('QuepidApp')
 
         var data = {
           ratings:        ratings,
-          case_id:        theCase.caseNo,
           clear_queries:  clearQueries,
         };
 
         // The API only sees a hash of ratings.
-        return $http.post('/api/import/ratings?file_format=hash', data);
+        return $http.post('/api/import/ratings/' + theCase.caseNo + '?file_format=hash', data);
       }
 
       function importRREFormat(theCase, rreJson, clearQueries) {
 
         var data = {
           rre_json:       rreJson,
-          case_id:        theCase.caseNo,
           clear_queries:  clearQueries,
         };
 
-        return $http.post('/api/import/ratings?file_format=rre', data);
+        return $http.post('/api/import/ratings/' + theCase.caseNo + '?file_format=rre', data);
 
       }
     }
