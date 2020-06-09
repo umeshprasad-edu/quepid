@@ -77,8 +77,6 @@ angular.module('QuepidApp')
         }
       }
 
-      this.unscoredQueries = {};
-
       // ***********************************
       // An individual search query that
       // gets executed
@@ -236,12 +234,10 @@ angular.module('QuepidApp')
 
         this.markScored = function() {
           this.hasBeenScored = true;
-          delete svc.unscoredQueries[this.queryId];
         };
 
         this.markUnscored = function() {
           this.hasBeenScored = false;
-          svc.unscoredQueries[this.queryId] = true;
         };
 
         this.fieldSpec = function() {
@@ -300,8 +296,6 @@ angular.module('QuepidApp')
           var self = this;
 
           return $q(function(resolve, reject) {
-            self.markUnscored();
-
             self.searcher = svc.createSearcherFromSettings(
               currSettings,
               self.queryText
@@ -553,7 +547,7 @@ angular.module('QuepidApp')
       };
 
       this.unscoredQueryCount = function() {
-        return Object.keys(this.unscoredQueries).length;
+        return Object.values(this.queries).reduce((a, b) => a + b.hasBeenScored ? 0 : 1, 0);
       };
 
       this.scoredQueryCount = function() {
@@ -701,7 +695,6 @@ angular.module('QuepidApp')
                 query.queryId = parseInt(addedQuery.queryId, 10);
                 query.ratingsStore.setQueryId(addedQuery.queryId);
                 self.queries[query.queryId] = query;
-                query.markUnscored();
                 svcVersion++;
                 broadcastSvc.send('updatedQueriesList');
 

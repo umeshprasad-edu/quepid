@@ -270,9 +270,9 @@ angular.module('QuepidApp')
               }
             }
 
-            $q.all(createPromises);
-
-            $uibModalInstance.close();
+            $q.all(createPromises).then(function() {
+              $uibModalInstance.close();
+            });
           });
         };
       });

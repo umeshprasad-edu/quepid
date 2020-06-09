@@ -78,11 +78,7 @@ angular.module('QuepidApp')
       });*/
 
       $scope.query.isNotAllRated = function() {
-        var score = $scope.query.score();
-        if (!score || score.score === null || score.allRated) {
-          return false;
-        }
-        return true;
+        return !$scope.query.allRated;
       };
 
       $scope.query.moused = false;
