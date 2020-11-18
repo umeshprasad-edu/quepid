@@ -48,14 +48,8 @@ angular.module('QuepidApp')
           $scope.loading = false;
         });
 
-      var events = [
-        'updatedScorersList',
-      ];
-      angular.forEach(events, function (eventName) {
-        $scope.$on(eventName, function() {
-          $scope.advanced._internalScorersList = customScorerSvc.scorers;
-          getLists();
-        });
+      $scope.$on('updatedScorersList', function() {
+        getLists();
       });
 
       function getLists() {
