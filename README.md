@@ -370,6 +370,16 @@ which will install the new Node module, and then save that dependency to `packag
 
 Then check in the updated `package.json` and `yarn.lock` files.
 
+## I'd like to add or update a Ruby gems
+
+Update the `Gemfile`, and then run:
+
+```
+bin/docker r bundle install    
+```
+
+Then check in the updated `Gemfile` and `Gemfile.lock` files.
+
 ## I'd like to test SSL
 
 There's a directory `.ssl` that contains they key and cert files used for SSL. This is a self signed generated certificate for use in development ONLY!
